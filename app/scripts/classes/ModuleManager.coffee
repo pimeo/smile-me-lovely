@@ -9,30 +9,35 @@ define [
     class ModuleManager
 
       _currentModule: null
-      _nextModule: null
+      _nextModuleID: null
       _modules: null
 
       constructor: ->
         # classes nav manager
         @_modules = []
-        @_modules[NAV.HOME]      = HomeController;
-        @_modules[NAV.EXPERIENCE] = ExperienceController;
+        @_modules[NAV.HOME]       = HomeController;
+        @_modules[NAV.EXPERIENCE] = ExperienceController
 
         window.appEvents.nav.add @_eventNavWillChange
 
       # before change modules
       _eventNavWillChange: (event, module) =>
-        @_nextModule = module 
+        #block event
+        console.log window.appEvents.nav
+        window.appEvents.nav.active = false
+        @_nextModuleID = module 
         if @_currentModule == null then @_show() else @_hide()
 
       _show: =>
-        # save previous module
-        @_currentModule = new @_modules[@_nextModule]()
+        # sure that view doesn't exist
+        @_currentModule = new @_modules[@_nextModuleID]()
         @_currentModule.show()
+        # unblock event
+        window.appEvents.nav.active = true
 
       _hide: =>
-        @_currentModule.hide();
-        @_show();
+        @_currentModule.hide()
+        @_show()
 
       deactivate: =>
         window.appEvents.nav.remove @_eventNavWillChange

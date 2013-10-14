@@ -22,3 +22,4 @@ define ['jquery'], ($) ->
 
     # dispose
     dispose: ->
+      console.log 'dispose bc'

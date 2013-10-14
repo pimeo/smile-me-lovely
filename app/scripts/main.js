@@ -20,7 +20,6 @@ require(['app', 'cs!classes/Application', 'cs!classes/modules/BaseController', '
     nav: new signals.Signal()
   }
 
-  console.log(window.appEvents);
   // launch application
   window.app = new Application();
 });

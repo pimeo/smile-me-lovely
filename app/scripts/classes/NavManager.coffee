@@ -1,7 +1,6 @@
 define ['cs!classes/Nav'], (NAV) ->  
   # NavManager
   class NavManager
-    _classes: null
     _currentID: null
 
     constructor: ->

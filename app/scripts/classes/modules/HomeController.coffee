@@ -14,4 +14,8 @@ define [
 
       show: ->
         super
-        console.log('show');
+
+      hide: ->
+        super
+
+      dispose: ->
