@@ -4,4 +4,4 @@ define [], () ->
 
     _currentState: null
 
-    construct: ->
+    constructor: ->

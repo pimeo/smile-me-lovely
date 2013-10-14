@@ -1,12 +1,10 @@
 define [
-  'tweenMax', 
-  'jquery',
-  'cs!classes/modules/BaseController',
-  # ui
-  'cs!classes/ui/CanvasManager'
-  
+    'tweenMax', 
+    'jquery',
+    'cs!classes/modules/BaseController',
+    'cs!classes/ui/CanvasContainer'
   ],
-  (TweenMax, $, BaseController, CanvasManager) ->
+  (TweenMax, $, BaseController, CanvasContainer) ->
     class ExperienceController extends BaseController
       
       _rootNode : null
@@ -17,7 +15,8 @@ define [
         BaseController.call @
         @_rootNode = $('#experience')
 
-        @_canvas = new CanvasManager("#experience-canvas")
+        @_canvas = new CanvasContainer "#experience-canvas"
+        console.log @_canvas
       
       show: ->
         super
