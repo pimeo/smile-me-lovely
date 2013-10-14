@@ -1,0 +1,44 @@
+SOURCE : 
+
+
+Video image traits générés
+http://www.youtube.com/watch?v=obbew_7_Xo8
+https://developer.mozilla.org/en-US/demos/detail/zen-photon-garden/launch
+
+
+Méditation : 
+http://www.youtube.com/watch?v=zP02RvMOSXU
+http://www.youtube.com/watch?v=7A2IdYCkBlQ
+
+
+Jouer sur une video
+http://www.youtube.com/watch?v=slgu1KTgibM
+
+
+Camera webrtc
+http://learningthreejs.com/blog/2012/02/07/live-video-in-webgl/
+http://jeromeetienne.github.io/tquery/plugins/headtrackr/examples/demo.html
+
+
+
+Detection sourire avec camera
+http://hpt.co.il/smile/
+https://github.com/roironn/SmileDetectJS
+
+BAlles musiques sons particules
+http://balldroppings.com/js/
+// multi player game
+http://hakim.se/experiments/html5/keylight/03/
+
+Radar de drague
+http://lab.hakim.se/radar/
+
+
+Flat colour ui
+http://flatuicolors.com/
+
+WEBGL implementation
+https://developer.mozilla.org/en-US/docs/Web/WebGL/Getting_started_with_WebGL
+http://badassjs.com/post/4064873160/webgl-2d-an-implementation-of-the-2d-canvas-context-in
+
+
