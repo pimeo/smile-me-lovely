@@ -12,7 +12,7 @@ require.config({
   stubModules : ['cs'],
 });
 
-require(['app', 'cs!classes/Application', 'cs!classes/modules/BaseController', 'signals'], function (app, Application, BaseController, signals) {
+require(['cs!classes/Application', 'cs!classes/modules/BaseController', 'signals'], function (Application, BaseController, signals) {
   'use strict';
 
   // launch signals events

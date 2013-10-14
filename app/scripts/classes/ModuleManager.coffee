@@ -23,7 +23,6 @@ define [
       # before change modules
       _eventNavWillChange: (event, module) =>
         #block event
-        console.log window.appEvents.nav
         window.appEvents.nav.active = false
         @_nextModuleID = module 
         if @_currentModule == null then @_show() else @_hide()

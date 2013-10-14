@@ -45,3 +45,6 @@ Random point as window.width/window.height
 http://jsfiddle.net/Xw29r/15/
 
 
+Boilertemplate WebGL avec des instances de shaders
+https://github.com/mikesoylu/webgl-boilerplate
+
