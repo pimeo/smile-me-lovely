@@ -15,6 +15,10 @@ define ['jquery'], ($) ->
     # hide module
     hide: ->
       @_rootNode.addClass 'hide'
+      @dispose()
 
     # listeners
     initListeners: ->
+
+    # dispose
+    dispose: ->

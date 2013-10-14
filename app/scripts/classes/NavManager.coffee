@@ -1,23 +1,13 @@
-define [
-  'cs!classes/Nav', 
-  'cs!classes/modules/HomeController', 
-  'cs!classes/modules/ExperienceController'
-  ], 
-  (NAV, HomeController, ExperienceController) ->
-  
-    # NavManager
-    class NavManager
-      _classes: null
-      _currentID: null
-      
-      constructor: ->
-        # classes nav manager
-        @_classes = []
-        @_classes[NAV.HOME]      = HomeController;
-        @_classes[NAV.EXPERIENCE] = ExperienceController;
+define ['cs!classes/Nav'], (NAV) ->  
+  # NavManager
+  class NavManager
+    _classes: null
+    _currentID: null
 
+    constructor: ->
 
-      set: (id) ->
-        return if @_currentID == id
-        @_currentID = new @_classes[id]()
-        console.log 'here', id
+    set: (id) ->
+      return if @_currentID == id
+      @_currentID = id
+      # dispatch view that will replace the previous view
+      window.appEvents.nav.dispatch "$nav.eventWillChange", @_currentID
