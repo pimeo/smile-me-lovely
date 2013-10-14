@@ -41,4 +41,7 @@ WEBGL implementation
 https://developer.mozilla.org/en-US/docs/Web/WebGL/Getting_started_with_WebGL
 http://badassjs.com/post/4064873160/webgl-2d-an-implementation-of-the-2d-canvas-context-in
 
+Random point as window.width/window.height
+http://jsfiddle.net/Xw29r/15/
+
 

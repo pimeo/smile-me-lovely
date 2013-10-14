@@ -5,7 +5,6 @@ define ['jquery'], ($) ->
 
     # constructor
     constructor: ->
-      console.log 'BaseController'
       @initListeners()
 
     # show module
@@ -22,4 +21,3 @@ define ['jquery'], ($) ->
 
     # dispose
     dispose: ->
-      console.log 'dispose bc'
