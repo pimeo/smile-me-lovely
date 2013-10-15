@@ -38,10 +38,10 @@ define [], () ->
           callback(this.objets && this.objects.length > 0) if callback
 
           timeDelta  = (new Date() - sDetect) - @_interval
-          delay      = (timeDelta > @_minDelay ) then timeDelta else @_minDelay
-
+          delay      = if timeDelta > @_minDelay then timeDelta else @_minDelay
+          console.log @_minDelay
           if @_on
-            setTimeout( =>
+            setTimeout (=>
               @_detectSmile(callback)
             ), delay
         ).detect 1, 1.25, 0.1, 1, true
