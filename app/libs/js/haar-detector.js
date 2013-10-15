@@ -1,14 +1,14 @@
 /**************************************************************************************
-** HAAR.js Feature Detection Library based on Viola-Jones Haar Detection algorithm
+** window.HAAR.js Feature Detection Library based on Viola-Jones Haar Detection algorithm
 ** Port of jviolajones (Java) which is a port of openCV C++ Haar Detector
 **
 ** Author Nikos M.
 ** url http://nikos-web-development.netai.net/
 **************************************************************************************/
 
-var HAAR=HAAR||{};
+window.HAAR=window.HAAR||{};
 // Detector Class with the haar cascade data
-HAAR.Detector=function(haardata)
+window.HAAR.Detector=function(haardata)
 {
   this.haardata=haardata;
   this.async=true;
@@ -17,7 +17,7 @@ HAAR.Detector=function(haardata)
   this.canvas=null;
 };
 // set image for detector along with scaling
-HAAR.Detector.prototype.image=function(image,scale)
+window.HAAR.Detector.prototype.image=function(image,scale)
 {
   this.Image=image;
   this.canvas=document.createElement('canvas');
@@ -31,13 +31,13 @@ HAAR.Detector.prototype.image=function(image,scale)
   return this;
 };
 // detector on complete callback
-HAAR.Detector.prototype.complete=function(func)
+window.HAAR.Detector.prototype.complete=function(func)
 {
   this.onComplete=func;
   return this;
 };
 // Detector detect method to start detection
-HAAR.Detector.prototype.detect=function(baseScale, scale_inc, increment, min_neighbors, doCannyPruning)
+window.HAAR.Detector.prototype.detect=function(baseScale, scale_inc, increment, min_neighbors, doCannyPruning)
 {
   if (typeof doCannyPruning=='undefined')
     doCannyPruning=true;
@@ -68,7 +68,7 @@ HAAR.Detector.prototype.detect=function(baseScale, scale_inc, increment, min_nei
   }*/
 };
 // Private functions for detection
-HAAR.Detector.prototype.computeGray=function(image)
+window.HAAR.Detector.prototype.computeGray=function(image)
 {
   this.gray=[];
   this.img=[];
@@ -103,7 +103,7 @@ HAAR.Detector.prototype.computeGray=function(image)
     }
   }
 };
-HAAR.Detector.prototype.detectAsync=function()
+window.HAAR.Detector.prototype.detectAsync=function()
 {
   var sizex=this.haardata.size1;
   var sizey=this.haardata.size2;
@@ -147,7 +147,7 @@ HAAR.Detector.prototype.detectAsync=function()
       this.onComplete.call(this);
   }
 };
-HAAR.Detector.prototype.IntegralCanny=function(grayImage)
+window.HAAR.Detector.prototype.IntegralCanny=function(grayImage)
 {
   var canny = [];
   var i,j,sum;
@@ -205,7 +205,7 @@ HAAR.Detector.prototype.IntegralCanny=function(grayImage)
   }
   return canny;
 };
-HAAR.Detector.prototype.merge=function(rects, min_neighbors)
+window.HAAR.Detector.prototype.merge=function(rects, min_neighbors)
 {
   var ret=new Array(rects.length);
   for (var r=0;r<ret.length;r++)
@@ -269,7 +269,7 @@ HAAR.Detector.prototype.merge=function(rects, min_neighbors)
   }
   return retour;
 };
-HAAR.Detector.prototype.equals=function(r1, r2)
+window.HAAR.Detector.prototype.equals=function(r1, r2)
 {
   var distance = Math.floor(r1.width*0.2);
 
@@ -282,7 +282,7 @@ HAAR.Detector.prototype.equals=function(r1, r2)
   if(r1.x>=r2.x&&r1.x+r1.width<=r2.x+r2.width&&r1.y>=r2.y&&r1.y+r1.height<=r2.y+r2.height) return true;
   return false;
 };
-HAAR.Detector.prototype.evalStage=function(s,i,j,scale)
+window.HAAR.Detector.prototype.evalStage=function(s,i,j,scale)
 {
   var sum=0;
   var threshold=this.haardata.stages[s].thres;
@@ -294,7 +294,7 @@ HAAR.Detector.prototype.evalStage=function(s,i,j,scale)
   }
   return sum>threshold;
 };
-HAAR.Detector.prototype.evalTree=function(s,t,i,j,scale)
+window.HAAR.Detector.prototype.evalTree=function(s,t,i,j,scale)
 {
   var features=this.haardata.stages[s].trees[t].feats;
   var cur_node_ind=0;
@@ -329,7 +329,7 @@ HAAR.Detector.prototype.evalTree=function(s,t,i,j,scale)
     }
   }
 };
-HAAR.Detector.prototype.getLeftOrRight=function(s,t,f, i, j, scale) 
+window.HAAR.Detector.prototype.getLeftOrRight=function(s,t,f, i, j, scale) 
 {
   var sizex=this.haardata.size1;
   var sizey=this.haardata.size2;

@@ -18,7 +18,6 @@ define [
 
         @_canvas = new CanvasContainer "#experience-canvas"
         @_smile  = new SmileDetectManager(); 
-        console.log @_canvas
       
       show: ->
         super
