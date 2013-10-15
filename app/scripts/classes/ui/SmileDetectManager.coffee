@@ -27,19 +27,17 @@ define [
         @_smileDetector.onSmile @_onSmileHandler
 
       _onSmileHandler: (isSmile) =>
-        #console.log 'isSmile', isSmile, other
-        #console.log 'before', @_smileState, isSmile
         preventSmileEvent = if @_smileState != isSmile then true else false 
 
         if isSmile
           # dispatch only one status per action
           if preventSmileEvent
             window.appEvents.smile.dispatch "$detect.smile"
-          console.log 'smile'
+            console.log 'smile'
         else
           if preventSmileEvent
             window.appEvents.smile.dispatch "$detect.noSmile"
-          console.log 'no smile'
+            console.log 'no smile'
 
         @_smileState = isSmile
 
@@ -50,8 +48,7 @@ define [
         switch event
           when "$detect.ready"   then @_cameraReady()
           when "$detect.refused" then @_cameraPermissionRefused()
-          #else console.log "ERROR : EVENT HANDLER UNRECOGNIZED"
-          else return 0
+          else console.log event
 
       # camera activated by user
       _cameraReady: =>
