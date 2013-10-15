@@ -3,6 +3,7 @@ window.appEvents = null;
 require.config({
   paths: {
     jquery          : '../bower_components/jquery/jquery',
+    haar            : '../libs/js/haar-detector',
     signals         : '../bower_components/js-signals/dist/signals.min', 
     tweenMax        : '../bower_components/greensock-js/src/minified/TweenMax.min',
     cs              : '../bower_components/require-cs/cs',
@@ -17,7 +18,8 @@ require(['cs!classes/Application', 'cs!classes/modules/BaseController', 'signals
 
   // launch signals events
   window.appEvents = {
-    nav: new signals.Signal()
+    nav   : new signals.Signal(),
+    smile : new signals.Signal() 
   }
 
   // launch application
