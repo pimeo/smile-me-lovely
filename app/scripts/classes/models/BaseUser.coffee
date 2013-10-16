@@ -3,23 +3,29 @@ define [], () ->
     class BaseUser
 
       _id       : null
-      _username : null
-      _point    : null
+      username  : null
+      point     : null
+      sex       : null
+      sexColor  : null
 
-      construct: ->
-
-      # add user
-      addUser: (id, username) ->
+      constructor: (id, username, sex)->
         @_id        = id
-        @_username  = username
+        @username   = username
+        @sex        = if !sex then "girl" else sex
+        @point      = {}
 
-      # remove user
-      removeUser: ->
-
+        @sexColor   = if @sex == "girl" then "0xF2C4D0 "else "0xBAD9D3"
 
       # add point to user
-      addPoint: (point) ->
+      _addPoint: (point) ->
+
+      # set point coordinates
+      setPoint: (point) ->
 
       # remove user point
       removePoint: (point) ->
+
+      # dispose
+      dispose: =>
+
 

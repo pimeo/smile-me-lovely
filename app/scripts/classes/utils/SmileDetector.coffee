@@ -30,10 +30,10 @@ define ['HAAR'], (HAAR) ->
           video : true
           audio : false
           (stream) =>
-            window.appEvents.smile.dispatch "$detect.ready"
+            window.appEvents.camera.dispatch "$camera.ready"
             @_video.src = window.URL.createObjectURL stream
           () ->
-            window.appEvents.smile.dispatch "$detect.refused"
+            window.appEvents.camera.dispatch "$camera.refused"
             console.log 'Permission denied by user'
 
     _detectSmile: (callback) =>

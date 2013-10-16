@@ -17,7 +17,7 @@ define [
         @_moduleManager = new ModuleManager()
 
         # set default view
-        @_navManager.set NAV.HOME
+        @_navManager.set NAV.EXPERIENCE
 
         @initListeners()
 

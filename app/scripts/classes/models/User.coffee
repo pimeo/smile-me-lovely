@@ -1,21 +1,24 @@
 # USER
 define [
   'cs!classes/models/BaseUser',
-  'cs!class/ui/LovePoint'
+  'cs!classes/ui/Point'
   ],
-  (BaseUser, LovePoint) ->
+  (BaseUser, Point) ->
     class User extends BaseUser
 
-      _id: null
-      _username: null
-      _point: null
-
-      construct: ->
+      constructor: (id, username, sex) ->
+        console.log "User"
         BaseUser.call @
+        super(id, username, sex)
 
-      addUser: ->
-        super
+        @_addPoint()
 
-      addPoint: (point) ->
+      # attribute coordinates
+      _addPoint: ->
+        @point = new Point()
+        console.log @point.getCoordinates()
+
+      # set point
+      setPoint: (point) ->
 
       removePoint: (point) ->

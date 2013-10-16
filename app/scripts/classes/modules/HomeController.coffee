@@ -1,5 +1,5 @@
 define [
-  'tweenMax', 
+  'TweenMax', 
   'jquery',
   'cs!classes/modules/BaseController'
   ],

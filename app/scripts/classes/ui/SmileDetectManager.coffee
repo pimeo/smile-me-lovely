@@ -8,6 +8,7 @@ define [
       _smileDetector      : null
       _videoContainer     : null
       _videoID            : null
+      _showCamera         : 'hidden'
 
       _smileState  : null
 
@@ -16,7 +17,7 @@ define [
         console.log 'SmileDetectManager'
         @_videoID         = "video-camera-smile"
         @_videoContainer  = $("#experience-camera-smile") 
-        @_videoContainer.append "<video id='#{@_videoID}' height='426' width='640' style='visibility:visible;' autoplay></video>"
+        @_videoContainer.append "<video id='#{@_videoID}' height='426' width='640' style='visibility:#{@_showCamera};' autoplay></video>"
 
         @_initEvents()
         # false : noSmile // true : smile
@@ -42,13 +43,13 @@ define [
         @_smileState = isSmile
 
       _initEvents: =>
-        window.appEvents.smile.add @_eventsHandler
+        window.appEvents.camera.add @_cameraStatesHandler
 
-      _eventsHandler: (event) =>
+      _cameraStatesHandler: (event) =>
         switch event
-          when "$detect.ready"   then @_cameraReady()
-          when "$detect.refused" then @_cameraPermissionRefused()
-          else console.log event
+          when "$camera.ready"   then @_cameraReady()
+          when "$camera.refused" then @_cameraPermissionRefused()
+          else return 0
 
       # camera activated by user
       _cameraReady: =>

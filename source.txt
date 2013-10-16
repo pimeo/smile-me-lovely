@@ -48,3 +48,24 @@ http://jsfiddle.net/Xw29r/15/
 Boilertemplate WebGL avec des instances de shaders
 https://github.com/mikesoylu/webgl-boilerplate
 
+
+Particles
+https://github.com/jsoverson/JavaScript-Particle-System/blob/master/js/lib/ParticleSystem.js
+
+Waves
+http://codepen.io/jackrugile/pen/iqApc
+http://www.johnpezzetti.com/2011/01/25/html5-canvas-tutorial-creating-a-2-dimensional-wave
+
+Splines
+http://scaledinnovation.com/analytics/splines/aboutSplines.html
+http://stackoverflow.com/questions/7054272/how-to-draw-smooth-curve-through-n-points-using-javascript-html5-canvas?answertab=active#tab-top
+http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline
+
+
+WEB RTC
+http://www.html5rocks.com/en/tutorials/webrtc/basics/?redirect_from_locale=fr
+
+DATA VIZ
+http://andywoodruff.com/
+
+

@@ -1,24 +1,41 @@
 # User Point
-define [], () ->
+define ['jquery'], ($) ->
   class Point
 
-    _x: null
-    _y: null
+    x: null
+    y: null
+
+    # default positions
+    _dTX: null
+    _dTY: null
 
     _w: null
     _h: null
 
+    _screenMargin : 30
+
     constructor: (x, y) ->
-      console.log 'point !'
-      @_x = 0
-      @_y = 0
+      @x = @y = 0
+      @_dTX = @_dTY = 0
 
       @_w = $(window).width()
       @_h = $(window).height()
 
+      @_randomCoordinates()
+
 
     # start : random coordinates
-    randomCoordinates: =>
-      @_x = Math.floor(Math.random() * @_w)
-      @_y = Math.floor(Math.random() * @_h)
-      #[@_x, @_y]
+    _randomCoordinates: =>
+      @x = Math.floor(Math.random() * ((@_h - @_screenMargin) - @_screenMargin) + @_screenMargin)
+      @y = Math.floor(Math.random() * ((@_h - @_screenMargin) - @_screenMargin) + @_screenMargin)
+
+      @_dTX = @x
+      @_dTY = @y
+
+    # get defaults position
+    getDefaultsCoordinates: =>
+      x: @_dTX, y: @_dTY
+
+    # get coordinates
+    getCoordinates: =>      
+      x: @x, y: @y
