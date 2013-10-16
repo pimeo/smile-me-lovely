@@ -2,9 +2,11 @@ define [
     'jquery',
     'cs!classes/NavManager', 
     'cs!classes/ModuleManager', 
-    'cs!classes/Nav'
+    'cs!classes/Nav',
+    'cs!classes/utils/AudioLoader',
+    'cs!classes/utils/AudioManager',
   ], 
-  ($, NavManager, ModuleManager, NAV) ->
+  ($, NavManager, ModuleManager, NAV, AudioLoader, AudioManager) ->
     class Application
       
       _navManager: null
@@ -13,11 +15,15 @@ define [
         # instanciate NavManager
         @_navManager    = new NavManager()
 
+        new AudioLoader()
+
+        @_audioManager  = new AudioLoader() 
+
         # instanciate ModuleManager
         @_moduleManager = new ModuleManager()
 
         # set default view
-        @_navManager.set NAV.EXPERIENCE
+        @_navManager.set NAV.HOME
 
         @initListeners()
 

@@ -19,6 +19,11 @@ define [
       show: ->
         super
 
+      setTimeout (->
+        soundManager.play 'sound-a-01',
+          volume: 10
+      ), 6000
+
       hide: ->
         super
 

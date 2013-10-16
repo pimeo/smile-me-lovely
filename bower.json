@@ -10,5 +10,7 @@
     "js-signals": "~1.0.0",
     "pixi": "~1.3.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "soundmanager": "*"
+  }
 }
