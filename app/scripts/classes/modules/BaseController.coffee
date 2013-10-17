@@ -21,3 +21,7 @@ define ['jquery'], ($) ->
 
     # dispose
     dispose: ->
+
+    # get params click
+    initParams: (params) ->
+      @params = params

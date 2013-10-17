@@ -8,6 +8,8 @@ define [], () ->
       sex       : null
       sexColor  : null
 
+      params    : null
+
       constructor: (id, username, sex)->
         @_id        = id
         @username   = username
@@ -27,5 +29,9 @@ define [], () ->
 
       # dispose
       dispose: =>
+
+      # get params click
+      initParams: (params) ->
+        @params = params
 
 

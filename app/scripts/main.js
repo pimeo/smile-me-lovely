@@ -9,7 +9,7 @@ require.config({
     signals         : '../bower_components/js-signals/dist/signals.min', 
     TweenMax        : '../bower_components/greensock-js/src/minified/TweenMax.min',
     TimelineMax     : '../bower_components/greensock-js/src/minified/TimelineMax.min',
-    'soundmanager2' : '../bower_components/soundmanager/script/soundmanager2-jsmin',
+    'soundmanager2' : '../bower_components/soundmanager/script/soundmanager2-nodebug-jsmin',
     cs              : '../bower_components/require-cs/cs',
     'coffee-script' : '../bower_components/coffee-script/index',
   },
@@ -24,7 +24,7 @@ require.config({
 
   exclude     : ['coffee-script'],
   stubModules : ['cs'],
-  waitSeconds: 10
+  waitSeconds: 5
 });
 
 require(["soundmanager2"], function(soundManager) {
@@ -55,18 +55,19 @@ define(function(require) {
   ];
 
   require(modules, function (Pixi, Application, BaseController, signals) {
-  'use strict';
+    'use strict';
 
-  // launch signals events
-  window.appEvents = {
-    nav   : new signals.Signal(),
-    smile : new signals.Signal() ,
-    camera  : new signals.Signal()
-  }
+    // launch signals events
+    window.appEvents = {
+      nav   : new signals.Signal(),
+      smile : new signals.Signal() ,
+      camera  : new signals.Signal(),
+      canvas  : new signals.Signal()
+    }
 
-  // launch application
-  window.app = new Application();
-});
+    // launch application
+    window.app = new Application();
+  });
 
 });
 

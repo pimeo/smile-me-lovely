@@ -10,6 +10,7 @@ define [
 
       _currentModule: null
       _nextModuleID: null
+      _nextModuleParams: null
       _modules: null
 
       constructor: ->
@@ -24,12 +25,14 @@ define [
       _eventNavWillChange: (event, module) =>
         #block event
         window.appEvents.nav.active = false
-        @_nextModuleID = module 
+        @_nextModuleID = module.view
+        @_nextModuleParams = module.params if module.params
         if @_currentModule == null then @_show() else @_hide()
 
       _show: =>
         # sure that view doesn't exist
         @_currentModule = new @_modules[@_nextModuleID]()
+        @_currentModule.initParams(@_nextModuleParams)
         @_currentModule.show()
         # unblock event
         window.appEvents.nav.active = true

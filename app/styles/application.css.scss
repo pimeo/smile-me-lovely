@@ -9,6 +9,7 @@
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    background: #FFFFFF;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -31,6 +32,7 @@ body {
     line-height: 40px;
     padding-bottom: 19px;
 }
+
 
 /* Custom page footer */
 .footer {
@@ -62,6 +64,20 @@ body {
 .marketing p + h4 {
     margin-top: 28px;
 }
+
+
+#canvas-background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+
+
+
+
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

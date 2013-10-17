@@ -18,36 +18,29 @@ define [
       _renderer : null
       _userGRDispContainer : null
 
+      active: false
+
       constructor: (container) ->
+
+        window.canvasGL = @
+        
         @_el = document.getElementById(container)
-
-        w = window
-        for vendor in ['ms', 'moz', 'webkit', 'o']
-            break if w.requestAnimationFrame
-            w.requestAnimationFrame = w["#{vendor}RequestAnimationFrame"]
-            w.cancelAnimationFrame = (w["#{vendor}CancelAnimationFrame"] or
-                                      w["#{vendor}CancelRequestAnimationFrame"])
-
-        targetTime = 0
-        w.requestAnimationFrame or= (callback) ->
-            targetTime = Math.max targetTime + 16, currentTime = +new Date
-            w.setTimeout (-> callback +new Date), targetTime - currentTime
-        w.cancelAnimationFrame or= (id) -> clearTimeout id
-
 
         # create canvas
         @_createCanvas()
 
-        @update()
+        # dispatch start to main application 
+        window.appEvents.canvas.dispatch "start"
         
         # resize
         $(window).resize @_resize
         setTimeout @_resize, 0
 
       _createCanvas: =>
-        @_stage             = new PIXI.Stage(0xED146F)
+        # 0xED146F
+        @_stage             = new PIXI.Stage()
         @_stage.interactive = true
-        @_renderer          = new PIXI.CanvasRenderer(@_w, @_h,null, false)
+        @_renderer          = new PIXI.CanvasRenderer(@_w, @_h, null, true)
         @_el.appendChild(@_renderer.view)
         @_renderer.view.style.position = "absolute"
         @_renderer.view.style.top      = @_renderer.view.style.left = "0px"
@@ -76,9 +69,3 @@ define [
         @_user.update() if @_user
         @_radar.update() if @_radar
         @_renderer.render @_stage
-
-      stop: =>
-        cancelAnimationFrame @update
-
-
-

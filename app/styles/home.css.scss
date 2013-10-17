@@ -1,0 +1,52 @@
+@import "compass";
+
+#home{
+
+  .container{
+    margin-top: 210px;
+  }
+
+  .home__title{
+    color: $as-color;
+    font-size: 80px;
+    font-family: $as-font, cursive;
+    font-size: 80px;
+    position: absolute;
+    width: 840px;
+    left: 50%;
+    top: 50%;
+    margin: -80px 0 0 -420px;
+    text-align: center;
+    font-weight: normal;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .home__title-was{
+    opacity: 0;
+    margin-bottom: 40px;
+    visibility: hidden;
+    font-family: $as-font, cursive;
+    font-size: 60px;
+    color: white;
+    text-align: center;
+    font-weight: normal;
+  }
+
+  .home__circle{
+    width: 200px;
+    height: 200px;
+    @include border-radius(50%);
+    float: left;
+    margin-left: 50px;
+    display:block;
+
+    &.boy{
+      background: #BAD9D3 image-url('../images/boy.png') no-repeat center center;
+      margin-left: 120px;
+    }
+    &.girl{
+      background: #F2C4D0 image-url('../images/girl.png') no-repeat center center;
+    }
+  }
+}

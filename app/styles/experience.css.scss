@@ -1,3 +1,19 @@
 #experience{
+
+
+  .container{
+    margin-top: 210px;
+  }
+
+  .experience__title{
+    color: $as-color;
+    font-size: 60px;
+    font-family: $as-font, cursive;
+    font-size: 80px;
+    text-align: center;
+    font-weight: normal;
+    opacity: 0;
+    visibility: hidden;
+  }
   
 }

@@ -11,6 +11,7 @@
   <meta name="viewport" content="width=device-width">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.tmp) styles/main.css -->
+  <link href='http://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
   <!-- build:js scripts/vendor/modernizr.js -->
@@ -24,38 +25,64 @@
 
 
  <div id="application">
-   <div id="home" class="hide">
+  <div id="home" class="hide">
     <div class="container">
-      <div class="header">
-          <h3 class="text-muted">webGL</h3>
-      </div>
-      <div class="jumbotron">
-        <h1>'Allo, 'Allo!</h1>
-        <p class="lead">Always a pleasure scaffolding your apps.</p>
-        <p><button class="btn btn-lg btn-success link__internal" data-nav-id="experience" >Splendid!</button></p>
-      </div>
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>HTML5 Boilerplate</h4>
-          <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
-        </div>
-      </div>
+
+      <h3 class="home__title">Première rencontre...</h3>
+
+      <h4 class="home__title-was">était avec...</h3>
+      <a href="#" data-nav-id="experience" data-nav-params="boy" class="home__circle boy link__internal"></a>
+      <a href="#" data-nav-id="experience" data-nav-params="girl" class="home__circle girl link__internal"></a>
     </div>
   </div>
   <!-- GOGOGO MA BICHE ENVOI DU LOURD -->
   <div id="experience" class="hide">
+
+    <div class="container">
+
+      <h3 class="experience__title">Chaque rencontre débute toujours par un sourire timide</h3>
+    </div>
+
     <a href="#" class="link__internal" data-nav-id="home">HOme</a>
     <div id="experience-camera-smile"></div>
     <div id="experience-canvas"></div>
   </div>
  </div>
 
-       
+ <!-- <canvas id="canvas-background"></canvas> -->
+ 
+<!-- BACKRGOUND SHADER -->
+<script id="vs" type="x-shader/vertex">
+  attribute vec3 position;
+
+  void main() {
+    gl_Position = vec4( position, 1.0 );
+  }
+</script>
+<script id="fs" type="x-shader/fragment">
+        #ifdef GL_ES
+        precision highp float;
+        #endif
+
+  uniform float time;
+  uniform vec2 resolution;
+
+  void main( void ) {
+    vec2 position = - 1.0 + 2.0 * gl_FragCoord.xy / resolution.xy;
+    float red = abs( sin( position.x * position.y + time / 5.0 ) );
+    float green = abs( sin( position.x * position.y + time / 4.0 ) );
+    float blue = abs( sin( position.x * position.y + time / 3.0 ) );
+    //gl_FragColor = vec4( red, green, blue, 1.0 );
+    //gl_FragColor = vec4( 0.2f, 0.1f, 1.0f, 1.0 );
+    gl_FragColor = vec4( 10.0, green, 250.0, 0.1);
+  }
+</script>
 
   <!-- build:js scripts/vendor.js -->
   <!-- bower:js -->
   <script src="bower_components/jquery/jquery.js"></script>
   <script src="bower_components/pixi/bin/pixi.js"></script>
+  <script src="libs/js/pixi-extra-graphics.js"></script>
   <script src="bower_components/greensock-js/src/minified/TweenMax.min.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
