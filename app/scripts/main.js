@@ -5,8 +5,7 @@ var GreenSockAMDPath = "greensock";
 require.config({
   paths: {
     jquery          : '../bower_components/jquery/jquery',
-    HAAR            : '../libs/js/haar-detector',
-    signals         : '../bower_components/js-signals/dist/signals.min', 
+    signals         : '../bower_components/js-signals/dist/signals.min',  
     TweenMax        : '../bower_components/greensock-js/src/minified/TweenMax.min',
     TimelineMax     : '../bower_components/greensock-js/src/minified/TimelineMax.min',
     'soundmanager2' : '../bower_components/soundmanager/script/soundmanager2-nodebug-jsmin',
@@ -44,14 +43,13 @@ require(["soundmanager2"], function(soundManager) {
   return soundManager;
 });
 
-
 // Load all modules
 define(function(require) {
   var modules = [
       '../bower_components/pixi/bin/pixi',
       'cs!classes/Application', 
       'cs!classes/modules/BaseController',
-      'signals'
+      'signals',
   ];
 
   require(modules, function (Pixi, Application, BaseController, signals) {
@@ -64,6 +62,10 @@ define(function(require) {
       camera  : new signals.Signal(),
       canvas  : new signals.Signal()
     }
+
+    window.stats = new Stats();
+    stats.setMode( 1 );
+    document.body.appendChild( stats.domElement );
 
     // launch application
     window.app = new Application();

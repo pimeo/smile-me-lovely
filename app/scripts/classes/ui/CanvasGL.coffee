@@ -65,7 +65,7 @@ define [
 
       # GLOBAL REDRAWING STAGE
       update: (dt) =>
-        requestAnimationFrame @update
+        #requestAnimationFrame @update
         @_user.update() if @_user
         @_radar.update() if @_radar
         @_renderer.render @_stage

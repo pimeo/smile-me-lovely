@@ -67,8 +67,10 @@ define [
 
       update: (dt) =>
         #@_bg.render() if @_bg
-        window.canvasGL.update() if @_canvasExpStatus && window.canvasGL.active
         requestAnimationFrame @update
+        window.stats.begin()
+        window.canvasGL.update() if @_canvasExpStatus && window.canvasGL.active
+        window.stats.end()
 
       stop: ->
         cancelAnimationFrame @update
