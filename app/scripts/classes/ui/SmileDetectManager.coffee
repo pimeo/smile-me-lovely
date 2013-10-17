@@ -63,4 +63,7 @@ define [
 
       dispose: ->
 
+      start: (interval, callback) ->
+        @_smileDetector.start(interval, callback)
+
 

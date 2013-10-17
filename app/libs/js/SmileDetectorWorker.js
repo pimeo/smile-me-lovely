@@ -12,7 +12,9 @@ onmessage = function (event){
         postMessage({
           status: 'complete',
           image_id: event.data.image_id,
-          objects: (this.objects.length > 0)
+          imagedata: event.data.imagedata,
+          objects: (this.objects.length > 0),
+          objectsCount: this.objects.length
         });
       }
     ).detect(imagedata, 1, 1.25, 0.1, 1, true);

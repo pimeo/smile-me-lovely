@@ -1,5 +1,5 @@
 #SMILE DETECTOR 
-define [], () ->
+define ['jquery'], ($) ->
   class SmileDetector
     
     _minDelay     = null
@@ -30,7 +30,7 @@ define [], () ->
 
       @_faceID        = 0
 
-      @_video     = document.getElementById(videoElementID)
+      @_video         = document.getElementById(videoElementID)
 
       window.URL = window.URL || window.webkitURL
       navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia
@@ -44,9 +44,11 @@ define [], () ->
             @_video.src = window.URL.createObjectURL stream
 
             @_canvas = document.createElement('canvas')
+            #$('#test').append(@_canvas)
             # create webworker
             console.log 'ready create web worker'
             @_createWorker()
+
           () ->
             window.appEvents.camera.dispatch "$camera.refused"
             console.log 'Permission denied by user'
@@ -85,8 +87,7 @@ define [], () ->
       @_canvas.width = @_video.width
       @_canvas.height = @_video.height
 
-
-      canvasCtx.drawImage(@_video, 0, 0)
+      canvasCtx.drawImage(@_video, 0, 0, @_video.width, @_video.height, 0, 0, 0.5 * @_video.width, 0.5 * @_video.height )
 
       @_w.postMessage
           'imagedata' : canvasCtx.getImageData 0, 0, @_video.width, @_video.height
