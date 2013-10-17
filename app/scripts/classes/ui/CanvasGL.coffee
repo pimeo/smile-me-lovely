@@ -2,8 +2,9 @@ define [
     'jquery'
     'cs!classes/display/User'
     'cs!classes/ui/Radar'
+    'cs!classes/ui/Others'
   ], 
-  ($, User, Radar) ->
+  ($, User, Radar, Others) ->
 
     class CanvasGL
       
@@ -13,6 +14,7 @@ define [
 
       _user  : null
       _radar: null
+      _others : null
 
       _stage    : null
       _renderer : null
@@ -62,6 +64,15 @@ define [
       addUser: (entity) =>
         @_user = new User(entity)
         @_userDispContainer.addChild @_user
+
+
+        # add others
+        @_others = new Others(entity.sexColor)
+        @_stage.addChild @_others
+
+        # add choosen one
+
+
 
       # GLOBAL REDRAWING STAGE
       update: (dt) =>

@@ -95,12 +95,12 @@ define ['jquery'], ($) ->
       
 
     _completedDetect: (event) =>
-      console.log 'test complete', event.data
-      #if event.data.status == "complete"
-
-      #else
-      #  console.log 'fuck'
-
+      #console.log 'test complete', event.data
+      if event.data.status == "complete"
+        if event.data.objectsCount >= 2
+          window.appEvents.smile.dispatch "smile"
+        else
+          window.appEvents.smile.dispatch "nosmile"
 
     # start detection
     start: (interval, callback) =>

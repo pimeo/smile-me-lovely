@@ -24,12 +24,11 @@ define [
         @tm = new TimelineMax({paused: true});
         time = 0
         @tm.to($('.home__title'), 0.5, {autoAlpha: 1}, time)
-        @tm.to($('.home__title'), 0.5, {autoAlpha: 0}, time+=2)
-        @tm.to($('body'), 0.5, {backgroundColor: "#D95F80"}, time)
-        @tm.to($('.home__circle'), 0.5, {autoAlpha: 1, marginTop: 0, ease: Ease.easeOut }, time+=0.6)
+        @tm.to($('.home__title'), 0.5, {marginTop: 0}, time+=2)
         @tm.to($('.home__title-was'), 0.6, {autoAlpha: 1, ease: Ease.easeOut }, time+=0.5)
+        @tm.staggerTo($('.home__circle'), 0.6, {autoAlpha: 1, marginTop: 0, ease: Cubic.easeOut }, 0.5)
 
-        $('.home__circle').css({opacity: 0, marginTop: -100})
+        $('.home__circle').css({opacity: 0, marginTop: 10})
         setTimeout (=>
           @tm.play()
           soundManager.play 'sound-a-1',

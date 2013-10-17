@@ -4,33 +4,42 @@
 
   .container{
     margin-top: 210px;
+    position: relative;
   }
 
   .home__title{
     color: $as-color;
-    font-size: 80px;
+    font-size: 70px;
     font-family: $as-font, cursive;
     font-size: 80px;
-    position: absolute;
-    width: 840px;
-    left: 50%;
-    top: 50%;
-    margin: -80px 0 0 -420px;
+    width: 100%;
     text-align: center;
     font-weight: normal;
+    position: absolute;
+    top: 0;
+    left: 0;
     opacity: 0;
     visibility: hidden;
+    margin-top: 180px;
+    margin-bottom: 0;
   }
 
   .home__title-was{
     opacity: 0;
+    margin-top: 0;
     margin-bottom: 40px;
+    margin-top: 70px;
     visibility: hidden;
     font-family: $as-font, cursive;
     font-size: 60px;
-    color: white;
+    color: $as-color;
     text-align: center;
     font-weight: normal;
+  }
+
+
+  .home__links{
+    height: 200px;
   }
 
   .home__circle{
