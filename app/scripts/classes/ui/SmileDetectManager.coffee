@@ -10,14 +10,16 @@ define [
       _videoID            : null
       _showCamera         : 'hidden'
 
-      _smileState  : null
+      _smileState         : null
+
+      _smileInterval      : null
 
 
       constructor: ->
         console.log 'SmileDetectManager'
         @_videoID         = "video-camera-smile"
         @_videoContainer  = $("#experience-camera-smile") 
-        @_videoContainer.append "<video id='#{@_videoID}' style='position: absolute;top: 3000px; left: 300px;' height='426' width='640' style='visibility:#{@_showCamera};' autoplay></video>"
+        @_videoContainer.append "<video id='#{@_videoID}' height='426' width='640' style='visibility:#{@_showCamera};' autoplay></video>"
 
         @_initEvents()
         # false : noSmile // true : smile
@@ -54,15 +56,17 @@ define [
         console.log 'CAMERA ACTIVATED'
         # start camera
         #@start 300
-        setInterval (=>
+        @_smileInterval = setInterval (=>
           @_smileDetector.startDetect()
-        ), 1000
+        ), 2000
 
       _cameraPermissionRefused: =>
         console.log 'CAMERA PERMISSION REFUSED'
 
       dispose: ->
+        clearInterval @_smileInterval
 
+      # deprecated (also see webworkers)
       start: (interval, callback) ->
         @_smileDetector.start(interval, callback)
 

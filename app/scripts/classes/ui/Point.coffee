@@ -12,7 +12,7 @@ define ['jquery'], ($) ->
     _w: null
     _h: null
 
-    _screenMargin : 30
+    _screenMargin : 120
 
     constructor: (x, y) ->
       @x = @y = 0
