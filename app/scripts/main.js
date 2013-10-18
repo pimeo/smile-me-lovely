@@ -64,9 +64,9 @@ define(function(require) {
       user    : new signals.Signal()
     }
 
-    window.stats = new Stats();
-    stats.setMode( 1 );
-    document.body.appendChild( stats.domElement );
+    //window.stats = new Stats();
+    //stats.setMode( 1 );
+    //document.body.appendChild( stats.domElement );
 
     // launch application
     window.app = new Application();
