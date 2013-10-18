@@ -34,14 +34,14 @@ define [
 
       userReady: false
 
-      constructor: (id, sexColor) ->
+      constructor: (id) ->
         super
-        @_user = new User id, "other"+id, sexColor
-        @_r = 10
+        @_user = new User id, "other"+id
+        @_r = 0
         @_rayonMax = 10
         @_d = 10 * 2
         @_n = 100
-        @_c = "0xFF0000"
+        @_c = "0xFFFFFF"
 
         @vX = (Math.random() * (2 - 0.1 + 1) ) + 0.1
         @vY = (Math.random() * (2 - 0.1 + 1) ) + 0.1
@@ -56,11 +56,10 @@ define [
         @position.y = @_user.point.y
 
         @updateDirection()
-        @show()
 
       draw: ->
         @clear()
-        @beginFill(@_c, 1)
+        @beginFill(@_c, 0.3)
         @drawCircle(@position.x, @position.y, @_r)
         @position.x += @vtX
         @position.y += @vtY
@@ -73,9 +72,14 @@ define [
           @angle = 360 - @angle;
           @updateDirection()
 
-      show: ->
+      fadeIn: ->
         @userReady = true
-        TweenMax.fromTo(@, 0.8, {_r: 0}, {_r: 10, ease: Cubic.easeOut})
+        @_r = 10
+
+
+
+      setColor: (color) ->
+        @_c = color
 
       randomRange: (min, max) ->
         Math.floor( (Math.random() * (max - min + 1) ) + min)
@@ -84,10 +88,6 @@ define [
         @radians = @angle * Math.PI / 180
         @vtX = Math.cos(@radians) * @speed
         @vtY = Math.sin(@radians) * @speed
-
-      move: ->
-
-        
 
       update: (dt) ->
         @draw()

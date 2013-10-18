@@ -2,9 +2,8 @@ define [
     'TweenMax'
     'jquery',
     'cs!classes/display/Radar.coffee',
-    'cs!classes/display/ArcSpectrum.coffee',
   ], 
-  (TweenMax, $, RadarGraphics, ArcSpecGraphics) ->
+  (TweenMax, $, RadarGraphics) ->
     class Radar extends PIXI.DisplayObjectContainer
 
       _circles      : null
@@ -24,12 +23,6 @@ define [
           @.addChild c
           c.start(@dispose)
         ), 1500
-
-
-        @_arc = new ArcSpecGraphics()
-        @_arc.position.x = 100
-        @_arc.position.y = 100
-        @.addChild @_arc
 
       update: (dt) ->
         for i in [0...@_circles.length]

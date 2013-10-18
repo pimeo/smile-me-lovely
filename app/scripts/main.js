@@ -60,7 +60,8 @@ define(function(require) {
       nav   : new signals.Signal(),
       smile : new signals.Signal() ,
       camera  : new signals.Signal(),
-      canvas  : new signals.Signal()
+      canvas  : new signals.Signal(),
+      user    : new signals.Signal()
     }
 
     window.stats = new Stats();

@@ -6,33 +6,40 @@ define [
   (TweenMax, $, OtherGraphics) ->
     class Others extends PIXI.DisplayObjectContainer
 
-      _users     	: null
+      _users     	  : null
       _indexUser  	: 0
-      _usersLength   : 100
+      _usersLength  : 100
+      _color        : null
 
       constructor: (color)->
         super
-
-        console.log @
 
         @_users = []
 
         timeAppears = 0
         for i in [0...@_usersLength]
-          setTimeout (=>
-            @_indexUser++
-            c = new OtherGraphics(@_indexUser, color)
-            @_users.push(c)
-            @.addChild c
-          ), timeAppears+=200
-
-  
-        console.log @_users
+          @_indexUser++
+          c = new OtherGraphics(@_indexUser, color)
+          @_users.push(c)
+          @.addChild c
 
       update: (dt) ->
         for i in [0...@_users.length]
           @_users[i].update()
 
       dispose: =>
+
+      setColor: (color) ->
+        @_color = color
+
+      showAll: ->
+        timeAppear = 0
+        for i in [0...@_users.length]
+          @_users[i].setColor(@_color)
+          @_users[i].fadeIn()
+          
+
+        undefined
+
 
 

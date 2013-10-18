@@ -8,7 +8,7 @@ define [
       _smileDetector      : null
       _videoContainer     : null
       _videoID            : null
-      _showCamera         : 'visible'
+      _showCamera         : 'hidden'
 
       _smileState         : null
 

@@ -20,6 +20,7 @@ define [
         #console.log @_point
 
       show: ->
+        $('.home__title, .home__circle').css({opacity: 0, visibility: 'hidden'})        
         super
         @tm = new TimelineMax({paused: true});
         time = 0
@@ -32,6 +33,7 @@ define [
         setTimeout (=>
           @tm.play()
           soundManager.play 'sound-a-1',
+            onfinish: @_loopAmbiance
             volume: 10
         ), 5000
 
@@ -41,6 +43,12 @@ define [
           soundManager.play 'sound-'+voiceType+'-' + number,
             volume: if voiceType == "f" then 40 else 60
         ), 10000
+
+      # loop sound
+      _loopAmbiance: =>
+         soundManager.play 'sound-a-1',
+            onfinish: @_loopAmbiance
+            volume: 10
 
       randomRange: (min, max) ->
         Math.floor( (Math.random() * (max - min + 1) ) + min)

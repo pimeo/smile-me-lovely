@@ -95,7 +95,7 @@ define ['jquery'], ($) ->
       
 
     _completedDetect: (event) =>
-      console.log 'test complete', event.data
+      #console.log 'test complete', event.data
       if event.data.status == "complete"
         if event.data.objectsCount >= 2
           window.appEvents.smile.dispatch "smile"
