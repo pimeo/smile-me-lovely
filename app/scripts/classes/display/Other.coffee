@@ -13,6 +13,22 @@ define [
       _d      : null
       _points : null
 
+      _w : 0
+      _h : 0
+
+      vX: 0
+      vY: 0
+
+      vtX : 0
+      vtY : 0
+
+      x: 0
+      y: 0
+
+      angle: null
+      radians: null
+      speed: 0.2
+
       _loopTM   : null 
       _isPaused : false
 
@@ -21,33 +37,57 @@ define [
       constructor: (id, sexColor) ->
         super
         @_user = new User id, "other"+id, sexColor
-        @_r = 0
+        @_r = 10
+        @_rayonMax = 10
         @_d = 10 * 2
         @_n = 100
-        @_c = @_user.sexColor
-        @_points = []
-        @show()
+        @_c = "0xFF0000"
 
+        @vX = (Math.random() * (2 - 0.1 + 1) ) + 0.1
+        @vY = (Math.random() * (2 - 0.1 + 1) ) + 0.1
+
+        @angle = @randomRange(0, 360)
+        @radians = @angle * Math.PI  / 180
+
+        @_w = $(window).width()
+        @_h = $(window).height()
+
+        @position.x = @_user.point.x
+        @position.y = @_user.point.y
+
+        @updateDirection()
+        @show()
 
       draw: ->
         @clear()
         @beginFill(@_c, 1)
-        @drawCircle(@_user.point.x, @_user.point.y, @_r)
+        @drawCircle(@position.x, @position.y, @_r)
+        @position.x += @vtX
+        @position.y += @vtY
         @endFill()
 
-      show: ->
-        TweenMax.fromTo(@, 0.8, {_r: 0}, {_r: 80, ease: Cubic.easeOut, onComplete: @_userShown})
+        if @position.x > @_w + @_rayonMax + 15 || @position.x < 0 + @_rayonMax / 2
+          @angle = 180 - @angle;
+          @updateDirection()
+        else if @position.y > @_h - @_rayonMax + 15 || @position.y < 0 + @_rayonMax / 2
+          @angle = 360 - @angle;
+          @updateDirection()
 
-      _userShown: =>
+      show: ->
         @userReady = true
+        TweenMax.fromTo(@, 0.8, {_r: 0}, {_r: 10, ease: Cubic.easeOut})
 
       randomRange: (min, max) ->
         Math.floor( (Math.random() * (max - min + 1) ) + min)
 
+      updateDirection: ->
+        @radians = @angle * Math.PI / 180
+        @vtX = Math.cos(@radians) * @speed
+        @vtY = Math.sin(@radians) * @speed
 
       move: ->
-        console.log 'qzdqzdz'
+
+        
 
       update: (dt) ->
-        @move if @userReady
         @draw()

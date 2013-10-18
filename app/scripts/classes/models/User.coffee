@@ -16,9 +16,11 @@ define [
       # attribute coordinates
       _addPoint: ->
         @point = new Point()
-        console.log @point.getCoordinates()
 
       # set point
       setPoint: (point) ->
 
       removePoint: (point) ->
+
+      getOpposedColor: (color) ->
+        super

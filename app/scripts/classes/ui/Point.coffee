@@ -12,7 +12,7 @@ define ['jquery'], ($) ->
     _w: null
     _h: null
 
-    _screenMargin : 120
+    _screenMargin : 20
 
     constructor: (x, y) ->
       @x = @y = 0
@@ -26,8 +26,8 @@ define ['jquery'], ($) ->
 
     # start : random coordinates
     _randomCoordinates: =>
-      @x = Math.floor(Math.random() * ((@_h - @_screenMargin) - @_screenMargin) + @_screenMargin)
-      @y = Math.floor(Math.random() * ((@_h - @_screenMargin) - @_screenMargin) + @_screenMargin)
+      @x = Math.floor(Math.random() * ((@_w - @_screenMargin) - @_screenMargin))
+      @y = Math.floor(Math.random() * ((@_h - @_screenMargin) - @_screenMargin))
 
       @_dTX = @x
       @_dTY = @y

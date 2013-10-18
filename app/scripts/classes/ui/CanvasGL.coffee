@@ -65,18 +65,17 @@ define [
         @_user = new User(entity)
         @_userDispContainer.addChild @_user
 
-
         # add others
-        @_others = new Others(entity.sexColor)
+        @_others = new Others(entity.getOpposedColor(entity.sexColor))
         @_stage.addChild @_others
+        @_stage.swapChildren @_userDispContainer, @_others
 
         # add choosen one
-
-
 
       # GLOBAL REDRAWING STAGE
       update: (dt) =>
         #requestAnimationFrame @update
         @_user.update() if @_user
         @_radar.update() if @_radar
+        @_others.update() if @_others
         @_renderer.render @_stage

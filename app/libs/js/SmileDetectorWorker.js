@@ -12,7 +12,7 @@ onmessage = function (event){
         postMessage({
           status: 'complete',
           image_id: event.data.image_id,
-          imagedata: event.data.imagedata,
+          //imagedata: event.data.imagedata,
           objects: (this.objects.length > 0),
           objectsCount: this.objects.length
         });
