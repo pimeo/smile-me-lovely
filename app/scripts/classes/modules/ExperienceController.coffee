@@ -56,7 +56,7 @@ define [
       # bind once
       _displayImage: =>
 
-        if @_startExperienceEvent
+        if !@_startExperienceEvent
           return
         @_startExperienceEvent = false
         tmImg = new TimelineMax({onComplete: @startExperience})
@@ -121,10 +121,11 @@ define [
             volume: if voiceType == "f" then 40 else 60
         ), 10000
 
+        $('#boy_face').addClass('next')
         window.appEvents.smile.add @_tweenNotify
 
       _tweenNotify: =>
-        $('#boy_face').css({marginLeft: 0, top: '80%'})
+        $('#boy_face').css({marginLeft: 0})
         tmImg = new TimelineMax()
         time = 0
         tmImg.to($('#boy_face'), 0.8, {ease: Cubic.easeIn, autoAlpha: 1 }, time)

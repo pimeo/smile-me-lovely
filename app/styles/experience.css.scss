@@ -38,4 +38,9 @@
   background-size: 200px;
   opacity: 0;
   visibility: hidden;
+
+  &.next{
+    left: 70%;
+    background-size: 70px;
+  }
 }
