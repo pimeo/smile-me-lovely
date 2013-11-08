@@ -50,43 +50,9 @@
     <div id="experience-canvas"></div>
   </div>
  </div>
-
- <!-- <canvas id="canvas-background"></canvas> -->
- 
-<!-- BACKRGOUND SHADER -->
-<script id="vs" type="x-shader/vertex">
-  attribute vec3 position;
-
-  void main() {
-    gl_Position = vec4( position, 1.0 );
-  }
-</script>
-<script id="fs" type="x-shader/fragment">
-        #ifdef GL_ES
-        precision highp float;
-        #endif
-
-  uniform float time;
-  uniform vec2 resolution;
-
-  void main( void ) {
-    vec2 position = - 1.0 + 2.0 * gl_FragCoord.xy / resolution.xy;
-    float red = abs( sin( position.x * position.y + time / 5.0 ) );
-    float green = abs( sin( position.x * position.y + time / 4.0 ) );
-    float blue = abs( sin( position.x * position.y + time / 3.0 ) );
-    //gl_FragColor = vec4( red, green, blue, 1.0 );
-    //gl_FragColor = vec4( 0.2f, 0.1f, 1.0f, 1.0 );
-    gl_FragColor = vec4( 10.0, green, 250.0, 0.1);
-  }
-</script>
-
   <!-- build:js scripts/vendor.js -->
   <!-- bower:js -->
   <script src="bower_components/stats.js/build/stats.min.js"></script>
-  <script src="bower_components/jquery/jquery.js"></script>
-  <script src="bower_components/pixi/bin/pixi.js"></script>
-  <script src="libs/js/pixi-extra-graphics.js"></script>
-  <script src="bower_components/greensock-js/src/minified/TweenMax.min.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 

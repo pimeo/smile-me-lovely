@@ -1,29 +1,35 @@
+'use strict';
+
 window.appEvents = null;
-
-var GreenSockAMDPath = "greensock";
-
+//var GreenSockAMDPath = "greensock";
 require.config({
   paths: {
     jquery          : '../bower_components/jquery/jquery',
     signals         : '../bower_components/js-signals/dist/signals.min',  
-    TweenMax        : '../bower_components/greensock-js/src/minified/TweenMax.min',
-    TimelineMax     : '../bower_components/greensock-js/src/minified/TimelineMax.min',
-    'soundmanager2' : '../bower_components/soundmanager/script/soundmanager2-nodebug-jsmin',
-    cs              : '../bower_components/require-cs/cs',
-    'coffee-script' : '../bower_components/coffee-script/index',
+    tweenMax        : '../bower_components/greensock-js/src/minified/TweenMax.min',
+    timelineMax     : '../bower_components/greensock-js/src/minified/TimelineMax.min',
+    soundmanager2   : '../bower_components/soundmanager/script/soundmanager2-nodebug-jsmin',
+    pixi            : '../bower_components/pixi/bin/pixi.dev',
+    classes         : './classes'
   },
   shim: {
-    'TweenMax': {
+    soundmanager2: {
+      exports: 'soundManager'
+    },
+    pixi: {
+      exports: 'PIXI'
+    },
+    tweenMax: {
+      deps: ['timelineMax'],
       exports: 'TweenMax'
     },
-    'soundmanager2': {
-      exports: 'soundManager'
+    timelineMax: {
+      exports: 'TimelineMax'
     }
   },
-
-  exclude     : ['coffee-script'],
-  stubModules : ['cs'],
-  waitSeconds: 5
+  exclude     : ['coffee-script']
+  //stubModules : ['cs'],
+  //waitSeconds: 5
 });
 
 require(["soundmanager2"], function(soundManager) {
@@ -47,11 +53,10 @@ require(["soundmanager2"], function(soundManager) {
 define(function(require) {
   var modules = [
       '../bower_components/pixi/bin/pixi',
-      'cs!classes/Application', 
-      'cs!classes/modules/BaseController',
+      'classes/Application',
+      'classes/modules/BaseController',
       'signals',
   ];
-
   require(modules, function (Pixi, Application, BaseController, signals) {
     'use strict';
 

@@ -28,6 +28,14 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
                 tasks: ['copy:styles', 'autoprefixer']
             },
+            coffee: {
+                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
+                tasks: ['coffee:dist']
+            },
+            coffeeTest: {
+                files: ['test/spec/{,*/}*.coffee'],
+                tasks: ['coffee:test']
+            },
             livereload: {
                 options: {
                     livereload: '<%= connect.options.livereload %>'
@@ -84,6 +92,30 @@ module.exports = function (grunt) {
                 }]
             },
             server: '.tmp'
+        },
+        coffee: {
+            options: {
+                sourceMap: true,
+                sourceRoot: ''
+            },
+            dist: {
+                files: [{
+                  expand: true,
+                  cwd: '<%= yeoman.app %>/scripts',
+                  src: '{,*/}*.coffee',
+                  dest: '.tmp/scripts',
+                  ext: '.js'
+                }]
+            },
+            test: {
+                files: [{
+                  expand: true,
+                  cwd: 'test/spec',
+                  src: '{,*/}*.coffee',
+                  dest: '.tmp/spec',
+                  ext: '.js'
+                }]
+            }
         },
         jshint: {
             options: {
@@ -286,13 +318,16 @@ module.exports = function (grunt) {
         },
         concurrent: {
             server: [
+                'coffee:dist',
                 'compass',
                 'copy:styles'
             ],
             test: [
+                'coffee',
                 'copy:styles'
             ],
             dist: [
+                'coffee',
                 'compass',
                 'copy:styles',
                 'imagemin',
